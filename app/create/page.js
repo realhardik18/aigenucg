@@ -19,14 +19,14 @@ function Create() {
   };
 
   return (
-    <>
+    <div className="bg-black">
       <Header />
-      <div className="max-w-2xl mx-auto p-6">
+      <div className="max-w-2xl mx-auto p-6 bg-black min-h-screen text-white">
         <h1 className="text-2xl font-bold mb-4">Create Video</h1>
 
         {/* Script Input */}
         <textarea
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border border-gray-600 bg-gray-900 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
           placeholder="Enter your script..."
           rows={5}
           value={script}
@@ -38,10 +38,10 @@ function Create() {
           {[1, 2, 3, 4].map((num) => (
             <img
               key={num}
-              src="/file.png"
+              src="/file.svg"
               alt={`Preview ${num}`}
               className={`w-24 h-24 object-cover border-2 rounded-lg cursor-pointer transition ${
-                selectedImage === num ? "border-blue-500 scale-105" : "border-gray-300"
+                selectedImage === num ? "border-white scale-105" : "border-gray-600"
               }`}
               onClick={() => setSelectedImage(num)}
             />
@@ -56,7 +56,7 @@ function Create() {
               <button
                 key={option}
                 className={`px-4 py-2 rounded-lg transition ${
-                  timing === option ? "bg-blue-500 text-white" : "bg-gray-200"
+                  timing === option ? "bg-white text-black" : "bg-gray-800"
                 }`}
                 onClick={() => setTiming(option)}
               >
@@ -70,10 +70,10 @@ function Create() {
         <button
           onClick={handleCreate}
           disabled={loading || script.trim() === ""}
-          className={`mt-6 w-full py-3 rounded-lg flex justify-center items-center ${
+          className={`mt-6 w-full py-3 rounded-lg flex justify-center items-center transition ${
             script.trim() === ""
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700 text-white"
+              ? "bg-gray-700 cursor-not-allowed"
+              : "bg-white text-black hover:bg-gray-300"
           }`}
         >
           {loading ? <span className="animate-spin mr-2">⏳</span> : "Create"}
@@ -81,7 +81,7 @@ function Create() {
 
         {/* Display Submitted Details */}
         {submittedData && (
-          <div className="mt-6 p-4 border rounded-lg bg-gray-100">
+          <div className="mt-6 p-4 border border-gray-600 rounded-lg bg-gray-900">
             <h2 className="text-lg font-semibold">Submitted Data:</h2>
             <p>
               <strong>Script:</strong> {submittedData.script}
@@ -95,7 +95,7 @@ function Create() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
